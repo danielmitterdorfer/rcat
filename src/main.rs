@@ -7,9 +7,9 @@ use std::env;
 fn rcat(file_name : &str) -> Result<(), io::Error> {
 	// We can just assume that the file exists and have try! take care of the rest.
 
-	// We cannot use the try! macro as it will return Errs automatically but main does not
-	// return anything, which will just produce a (misleading) error message. Therefore this
-	// code is contained in a separate function.
+	// We cannot use the try! macro in #main() as try! will return Errs automatically but #main()
+	// does not return anything, which will just produce a (misleading) error message. Therefore
+	// this code is contained in a dedicated function.
 	//
 	// See also http://stackoverflow.com/questions/30555477/try-does-not-compile
 	let f = try!(File::open(file_name));
@@ -22,7 +22,7 @@ fn rcat(file_name : &str) -> Result<(), io::Error> {
 }
 
 fn main() {
-	// This is not used anymore and just here for documentatory purposes - see more details in
+	// 'args' is not used anymore and just here for documentatory purposes - see more details in
 	// the if branch below.
 
 	//let args : Args = env::args();
@@ -41,7 +41,7 @@ fn main() {
 
 		// args[0] is always present
 		let executable_name = env::args().nth(0).unwrap();
-		println!("Usage: {}, input file name", executable_name);
+		println!("Usage: {} input file name", executable_name);
 		// EX_USAGE (see sysexits.h)
 		std::process::exit(64);
 	} else {
