@@ -1,0 +1,4 @@
+[package]
+name = "rcat"
+version = "0.1.0"
+authors = ["Daniel Mitterdorfer <daniel.mitterdorfer@gmail.com>"]
